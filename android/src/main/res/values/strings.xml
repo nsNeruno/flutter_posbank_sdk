@@ -1,0 +1,449 @@
+<resources>
+    <string name="app_name">SDK Tools</string>
+    <string name="action_reload">Reload Ports</string>
+    <string name="action_connect">Connect</string>
+    <string name="action_disconnect">Disconnect</string>
+    <string name="action_enable_event_listener">ENABLE EVENT LISTENER</string>
+    <string name="action_disable_event_listener">DISABLE EVENT LISTENER</string>
+    <string name="action_start_loopback">START LOOPBACK</string>
+    <string name="action_stop_loopback">STOP LOOPBACK</string>
+    <string name="action_clear">Clear</string>
+    <string name="action_send">Send</string>
+    <string name="action_read">Read</string>
+    <string name="action_settings">SETTINGS</string>
+
+    <string name="hint_ports">Port name</string>
+    <string name="hint_send">Data to send</string>
+    <string name="hint_received">Received data (Hex)</string>
+    <string name="hint_hex_mode">Hex Mode</string>
+    <string name="hint_available_bytes" translatable="false">Available %,3d byte(s) from %2$s</string>
+    <string name="hint_unknown_bytes" translatable="false">\?\?\?</string>
+    <string name="hint_received_textbox">Click \"READ\" and received messages will be display here.</string>
+    <string name="hint_send_textbox">Write your message and click \"SEND\" to deliver message to connected port.</string>
+    <string name="in_progress">Finding. Please wait...</string>
+
+    <string name="toast_connect_succeeded">Succeeded to connect %s</string>
+    <string name="toast_connect_failed">Failed to connect %s.</string>
+    <string name="toast_not_available">%s not available.</string>
+    <string name="toast_need_grant_permission">Needs permission to access %s.</string>
+    <string name="toast_send_failed">Failed to write to %s.</string>
+    <string name="toast_send_success">Sent %1$d byte(s) to %2$s</string>
+    <string name="toast_read_failed">Failed to read from %s.</string>
+    <string name="toast_read_success">Read %1$d byte(s) from %2$s</string>
+
+    <string name="menu_settings">Settings</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="title_connecting">connecting&#8230;</string>
+    <string name="title_not_connected">not connected</string>
+    <string name="menu_connect_bluetooth">Connect (Bluetooth)</string>
+    <string name="menu_connect_network">Connect (Network)</string>
+    <string name="menu_connect_usb">Connect (USB)</string>
+    <string name="menu_connect_wifi_p2p">Connect (Wi-Fi P2P)</string>
+    <string name="menu_disconnect">Disconnect</string>
+    <string name="alignment">Alignment</string>
+    <string name="left_alignment">Left alignment</string>
+    <string name="center_alignment">Center alignment</string>
+    <string name="right_alignment">Right alignment</string>
+    <string name="character_font">Character font</string>
+    <string name="font_a">Font A</string>
+    <string name="font_b">Font B</string>
+    <string name="font_c">Font C</string>
+    <string name="underline">Underline</string>
+    <string name="underline_none">Underline none</string>
+    <string name="underline_1dot_thick">Underline 1-dot thick</string>
+    <string name="underline_2dot_thick">Underline 2-dot thick</string>
+    <string name="emphasized">Emphasized</string>
+    <string name="reverse">Reverse</string>
+    <string name="horizontal_direction">Enlarged in horizontal direction</string>
+    <string name="vertical_direction">Enlarged in vertical direction</string>
+    <string name="use_serial">Use SerialPort</string>
+    <string name="print">Print</string>
+    <string name="print_without_attr">Print without Attributes</string>
+    <string name="slogan">At POSBANK, we aspire to be the most trusted and respected company in the in-store solution industry and satisfy customers with best-in-class products and services. </string>
+    <string name="bar_code_system">Bar code system</string>
+    <string name="upc_a">UPC-A</string>
+    <string name="upc_e">UPC-E</string>
+    <string name="ean13">EAN13</string>
+    <string name="ean8">EAN8</string>
+    <string name="code39">CODE39</string>
+    <string name="itf">ITF</string>
+    <string name="codabar">CODABAR</string>
+    <string name="code93">CODE93</string>
+    <string name="code128">CODE128</string>
+    <string name="filepath">Path</string>
+    <string name="width">Width</string>
+    <string name="height">Height</string>
+    <string name="character_position">Character position</string>
+    <string name="not_printed">Not printed</string>
+    <string name="above_the_bar_code">Above the bar code</string>
+    <string name="below_the_bar_code">Below the bar code</string>
+    <string name="both_above_and_below_the_bar_code">Both above and below the bar code</string>
+    <string name="data">Data</string>
+    <string name="bar_code_width_hint">from 1 to 6</string>
+    <string name="bar_code_height_hint">from 1 to 255</string>
+    <string name="number2">2</string>
+    <string name="number3">3</string>
+    <string name="number162">162</string>
+    <string name="upc_a_data">012345678905</string>
+    <string name="homepage">http://www.posbankusa.com</string>
+    <string name="qrcode_model">QR Code model</string>
+    <string name="model1">Model 1</string>
+    <string name="model2">Model 2</string>
+    <string name="size">Size</string>
+    <string name="pdf417_width_hint">from 2 to 3</string>
+    <string name="pdf417_height_hint">from 2 to 8</string>
+    <string name="qrcode_size_hint">from 1 to 8</string>
+    <string name="maxicode_mode">Mode for Maxi Code</string>
+    <string name="mode2">Mode 2</string>
+    <string name="mode3">Mode 3</string>
+    <string name="mode4">Mode 4</string>
+    <string name="datamatrix_size_hint">from 2 to 3</string>
+    <string name="gallery">Gallery</string>
+    <string name="content_description">contentDescription</string>
+    <string name="number0">0</string>
+    <string name="number100">100</string>
+    <string name="number50">50</string>
+    <string name="width_none">None</string>
+    <string name="width_full">Full</string>
+    <string name="level">Level</string>
+    <string name="level_hint">from 13 to 88</string>
+    <string name="ip">IP</string>
+    <string name="port">Port</string>
+    <string name="control_command">Control command</string>
+    <string name="get_response">Get response</string>
+    <string name="mode">Mode</string>
+    <string name="standard_mode">Standard mode</string>
+    <string name="page_mode">Page mode</string>
+    <string name="print_direction">Print direction</string>
+    <string name="degree_0">0-degree rotation</string>
+    <string name="degree_90">90-degree rotation</string>
+    <string name="degree_180">180-degree rotation</string>
+    <string name="degree_270">270-degree rotation</string>
+    <string name="horizontal_start_position">Horizontal start position</string>
+    <string name="vertical_start_position">Vertical start position</string>
+    <string name="horizontal_print_area">Horizontal print area</string>
+    <string name="vertical_print_area">Vertical print area</string>
+    <string name="number384">384</string>
+    <string name="number840">840</string>
+    <string name="form_feed">Form feed</string>
+    <string name="find_bluetooth_printers">Find Blueooth printers</string>
+    <string name="number9100">9100</string>
+    <string name="ip_address">192.168.0.0</string>
+    <string name="define">Define</string>
+    <string name="upload">Upload</string>
+    <string name="print_all">Print all</string>
+    <string name="remove">Remove</string>
+    <string name="remove_all">Remove all</string>
+    <string name="key_code_list">Key code list</string>
+    <string name="key_code">Key code</string>
+    <string name="key_code_hint">from 0 to 255</string>
+    <string name="direct_io_hint">Example: 10 04 02</string>
+    <string name="enable_power_saving_mode">Enable power saving mode</string>
+    <string name="power_saving_time">Power saving time</string>
+    <string name="power_saving_time_hint">from 5 to 255</string>
+    <string name="sec">sec.</string>
+    <string name="number20">20</string>
+    <string name="print_sample1">Print sample1</string>
+    <string name="print_sample2">Print sample2</string>
+    <string name="dot_matrix_method">Dot matrix method (SRP-275II)</string>
+    <string name="set">Set</string>
+    <string name="repeat">Repeat</string>
+    <string name="number10">10</string>
+    <string name="title_activity_tph_thermister_status">TphThermisterStatusActivity</string>
+    <string name="title_activity_page_mode">PageModeActivity</string>
+    <string name="receipt_sample1">384</string>
+    <string name="receipt_sample2">Kooloora Ave 5\n2096 Queenscliff</string>
+    <string name="receipt_sample3">MERCHANT ID</string>
+    <string name="receipt_sample4">ZS155377#</string>
+    <string name="receipt_sample5">TERMINAL</string>
+    <string name="receipt_sample6">82389775</string>
+    <string name="receipt_sample7">REFERENCE\n</string>
+    <string name="receipt_sample8">182230</string>
+    <string name="receipt_sample9">CUSTOMER COPY</string>
+    <string name="receipt_sample10">CARD NO :</string>
+    <string name="receipt_sample11">294450&#8211;176(I)</string>
+    <string name="receipt_sample12">EXPIRATION DATE :</string>
+    <string name="receipt_sample13">12/16</string>
+    <string name="receipt_sample14">VISA CARD</string>
+    <string name="receipt_sample15">CREDIT\nPURCHASE\nTIP\n\nTOTAL\n</string>
+    <string name="receipt_sample16">*APPROVED\n</string>
+    <string name="receipt_sample17">00</string>
+    <string name="receipt_sample18">AUTH NO :</string>
+    <string name="receipt_sample19">182937</string>
+    <string name="receipt_sample20">AID :</string>
+    <string name="receipt_sample21">A0001927354445</string>
+    <string name="receipt_sample22">ATC : 110</string>
+    <string name="receipt_sample23">TVR : 2822287630</string>
+    <string name="receipt_sample24">CSN : 08</string>
+    <string name="receipt_sample25">1172677333555667</string>
+    <string name="track1">Track1</string>
+    <string name="track2">Track2</string>
+    <string name="track3">Track3</string>
+    <string name="msr_setting_value">MSR setting value</string>
+    <string name="transmit_read_command">Transmit read command</string>
+    <string name="cancel_msr_reader_mode">Cancel MSR reader mode</string>
+    <string name="dithering">Dithering</string>
+    <string name="compress">Compress</string>
+    <string name="code_page437">Ç ü é â ä à å ç ê ë è ï î ì Ä Å\n
+        É æ Æ ô ö ò û ù ÿ Ö Ü ¢ £ ¥ ₧ ƒ\n
+        á í ó ú ñ Ñ ª º ¿ ⌐ ¬ ½ ¼ ¡ « »\n
+        ░ ▒ ▓ │ ┤ ╡ ╢ ╖ ╕ ╣ ║ ╗ ╝ ╜ ╛ ┐\n
+        └ ┴ ┬ ├ ─ ┼ ╞ ╟ ╚ ╔ ╩ ╦ ╠ ═ ╬ ╧\n
+        ╨ ╤ ╥ ╙ ╘ ╒ ╓ ╫ ╪ ┘ ┌ █ ▄ ▌ ▐ ▀\n
+        α ß Γ π Σ σ µ τ Φ Θ Ω δ ∞ φ ε ∩\n
+        ≡ ± ≥ ≤ ⌠ ⌡ ÷ ≈ ° ∙ · √ ⁿ ² ■\n\n\n\n</string>
+    <string name="code_page737">Α Β Γ Δ Ε Ζ Η Θ Ι Κ Λ Μ Ν Ξ Ο Π\n
+        Ρ Σ Τ Υ Φ Χ Ψ Ω α β γ δ ε ζ η θ\n
+		ι κ λ μ ν ξ ο π ρ σ ς τ υ φ χ ψ\n
+		░ ▒ ▓ │ ┤ ╡ ╢ ╖ ╕ ╣ ║ ╗ ╝ ╜ ╛ ┐\n
+		└ ┴ ┬ ├ ─ ┼ ╞ ╟ ╚ ╔ ╩ ╦ ╠ ═ ╬ ╧\n
+		╨ ╤ ╥ ╙ ╘ ╒ ╓ ╫ ╪ ┘ ┌ █ ▄ ▌ ▐ ▀\n
+		ω ά έ ή ϊ ί ό ύ ϋ ώ Ά Έ Ή Ί Ό Ύ\n
+		Ώ ± ≥ ≤ Ϊ Ϋ ÷ ≈ ° ∙ · √ ⁿ ² ■\n\n\n\n</string>
+    <string name="code_page_katakana">▁	▂ ▃ ▄ ▅ ▆ ▇ █ ▏  ▎	 ▍  ▌ ▋  ▊ ▉ ┼\n
+	     ┻ ┳ ┫ ┣ ─ ━ │ ┃ ┏ ┓ ┗ ┛ ╭ ╮ ╯ ╰\n
+	     。 「 」 、 ・ ヲ ァ ィ ゥ ェ ォ ャ ュ ョ ッ\n
+	     ー ア イ ウ エ オ カ キ ク ケ コ サ シ ス セ ソ\n
+	     タ チ ツ テ ト ナ ニ ヌ ネ ノ ハ ヒ フ ヘ ホ マ\n
+	     ミ ム メ モ ヤ ユ ヨ ラ リ ル レ ロ ワ ン ゛ ゜\n
+	     〓 ◢ ◣ ◤ ◥ ♠ ♥ ♦ ♣ ● ○ ╱ ╲\n
+	     ╳ 円 年 月 日 時 分 秒 〒 市 区 町 村 人 ▒\n\n\n\n</string>
+    <string name="code_page775">Ć ü é ā ä ģ å ć ł ē Ŗ ŗ ī Ź Ä Å\n
+        É æ Æ ō ö Ģ ¢ Ś ś Ö Ü ø £ Ø × ¤\n
+        Ā Ī ó Ż ż ź ” ¦ © ® ¬ ½ ¼ Ł « »\n
+        ░ ▒ ▓ │ ┤ Ą Č Ę Ė ╣ ║ ╗ ╝ Į Š ┐\n
+        └ ┴ ┬ ├ ─ ┼ Ų Ū ╚ ╔ ╩ ╦ ╠ ═ ╬ Ž\n
+        ą č ę ė į š ų ū ž ┘ ┌ █ ▄ ▌ ▐ ▀\n
+        Ó ß Ō Ń õ Õ µ ń Ķ ķ Ļ ļ ņ Ē Ņ ’\n
+        ± “ ¾ ¶ § ÷ „ ° ∙ · ¹ ³ ² ■\n\n\n\n</string>
+    <string name="code_page850">Ç ü é â ä à å ç ê ë è ï î ì Ä Å\n
+        É æ Æ ô ö ò û ù ÿ Ö Ü ø £ Ø × ƒ\n
+        á í ó ú ñ Ñ ª º ¿ ® ¬ ½ ¼ ¡ « »\n
+        ░ ▒ ▓ │ ┤ Á Â À © ╣ ║ ╗ ╝ ¢ ¥ ┐\n
+        └ ┴ ┬ ├ ─ ┼ ã Ã ╚ ╔ ╩ ╦ ╠ ═ ╬ ¤\n
+        ð Ð Ê Ë È ı Í Î Ï ┘ ┌ █ ▄ ¦ Ì ▀\n
+        Ó ß Ô Ò õ Õ µ þ Þ Ú Û Ù ý Ý ¯ ´\n
+        ± ‗ ¾ ¶ § ÷ ¸ ° ¨ · ¹ ³ ² ■\n\n\n\n</string>
+    <string name="code_page852">Ç ü é â ä ů ć ç ł ë Ő ő î Ź Ä Ć\n
+        É Ĺ ĺ ô ö Ľ ľ Ś ś Ö Ü Ť ť Ł × č\n
+        á í ó ú Ą ą Ž ž Ę ę ¬ ź Č ş « »\n
+        ░ ▒ ▓ │ ┤ Á Â Ě Ş ╣ ║ ╗ ╝ Ż ż ┐\n
+        └ ┴ ┬ ├ ─ ┼ Ă ă ╚ ╔ ╩ ╦ ╠ ═ ╬ ¤\n
+        đ Đ Ď Ë ď Ň Í Î ě ┘ ┌ █ ▄ Ţ Ů ▀\n
+        Ó ß Ô Ń ń ň Š š Ŕ Ú ŕ Ű ý Ý ţ ´\n
+        ˝ ˛ ˇ ˘ § ÷ ¸ ° ¨ ˙ ű Ř ř ■\n\n\n\n</string>
+    <string name="code_page855">ђ Ђ ѓ Ѓ ё Ё є Є ѕ Ѕ і І ї Ї ј Ј\n
+        љ Љ њ Њ ћ Ћ ќ Ќ ў Ў џ Џ ю Ю ъ Ъ\n
+        а А б Б ц Ц д Д е Е ф Ф г Г « »\n
+        ░ ▒ ▓ │ ┤ х Х и И ╣ ║ ╗ ╝ й Й ┐\n
+        └ ┴ ┬ ├ ─ ┼ к К ╚ ╔ ╩ ╦ ╠ ═ ╬ ¤\n
+        л Л м М н Н о О п ┘ ┌ █ ▄ П я ▀\n
+        Я р Р с С т Т у У ж Ж в В ь Ь №\n
+        ы Ы з З ш Ш э Э щ Щ ч Ч § ■\n\n\n\n</string>
+    <string name="code_page857">Ç ü é â ä à å ç ê ë è ï î ı Ä Å\n
+        É æ Æ ô ö ò û ù İ Ö Ü ø £ Ø Ş ş\n
+        á í ó ú ñ Ñ Ğ ğ ¿ ® ¬ ½ ¼ ¡ « »\n
+        ░ ▒ ▓ │ ┤ Á Â À © ╣ ║ ╗ ╝ ¢ ¥ ┐\n
+        └ ┴ ┬ ├ ─ ┼ ã Ã ╚ ╔ ╩ ╦ ╠ ═ ╬ ¤\n
+        º ª Ê Ë È € Í Î Ï ┘ ┌ █ ▄ ¦ Ì ▀\n
+        Ó ß Ô Ò õ Õ µ × Ú Û Ù ì ÿ ¯ ´\n
+        ± ¾ ¶ § ÷ ¸ ° ¨ · ¹ ³ ² ■\n\n\n\n</string>
+    <string name="code_page858">Ç ü é â ä à å ç ê ë è ï î ì Ä Å\n
+        É æ Æ ô ö ò û ù ÿ Ö Ü ø £ Ø × ƒ\n
+        á í ó ú ñ Ñ ª º ¿ ® ¬ ½ ¼ ¡ « »\n
+        ░ ▒ ▓ │ ┤ Á Â À © ╣ ║ ╗ ╝ ¢ ¥ ┐\n
+        └ ┴ ┬ ├ ─ ┼ ã Ã ╚ ╔ ╩ ╦ ╠ ═ ╬ ¤\n
+        ð Ð Ê Ë È € Í Î Ï ┘ ┌ █ ▄ ¦ Ì ▀\n
+        Ó ß Ô Ò õ Õ µ þ Þ Ú Û Ù ý Ý ¯ ´\n
+        ± ‗ ¾ ¶ § ÷ ¸ ° ¨ · ¹ ³ ² ■\n\n\n\n</string>
+    <string name="code_page860">Ç ü é â ã à Á ç ê Ê è Í Ô ì Ã Â\n
+        É À È ô õ ò Ú ù Ì Õ Ü ¢ £ Ù ₧ Ó\n
+        á í ó ú ñ Ñ ª º ¿ Ò ¬ ½ ¼ ¡ « »\n
+        ░ ▒ ▓ │ ┤ ╡ ╢ ╖ ╕ ╣ ║ ╗ ╝ ╜ ╛ ┐\n
+        └ ┴ ┬ ├ ─ ┼ ╞ ╟ ╚ ╔ ╩ ╦ ╠ ═ ╬ ╧\n
+        ╨ ╤ ╥ ╙ ╘ ╒ ╓ ╫ ╪ ┘ ┌ █ ▄ ▌ ▐ ▀\n
+        α ß Γ π Σ σ µ τ Φ Θ Ω δ ∞ φ ε ∩\n
+        ≡ ± ≥ ≤ ⌠ ⌡ ÷ ≈ ° ∙ · √ ⁿ ² ■\n\n\n\n</string>
+    <string name="code_page862">א ב ג ד ה ו ז ח ט י ך כ ל ם מ ן\n
+        נ ס ע ף פ ץ צ ק ר ש ת ¢ £ ¥ ₧ ƒ\n
+        á í ó ú ñ Ñ ª º ¿ ⌐ ¬ ½ ¼ ¡ « »\n
+        ░ ▒ ▓ │ ┤ ╡ ╢ ╖ ╕ ╣ ║ ╗ ╝ ╜ ╛ ┐\n
+        └ ┴ ┬ ├ ─ ┼ ╞ ╟ ╚ ╔ ╩ ╦ ╠ ═ ╬ ╧\n
+        ╨ ╤ ╥ ╙ ╘ ╒ ╓ ╫ ╪ ┘ ┌ █ ▄ ▌ ▐ ▀\n
+        α ß Γ π Σ σ µ τ Φ Θ Ω δ ∞ φ ε ∩\n
+        ≡ ± ≥ ≤ ⌠ ⌡ ÷ ≈ ° ∙ · √ ⁿ ² ■\n\n\n\n</string>
+    <string name="code_page863">Ç ü é â Â à ¶ ç ê ë è ï î ‗ À §\n
+        É È Ê ô Ë Ï û ù ¤ Ô Ü ¢ £ Ù Û ƒ\n
+        ¦ ´ ó ú ¨ ¸ ³ ¯ Î ⌐ ¬ ½ ¼ ¾ « »\n
+        ░ ▒ ▓ │ ┤ ╡ ╢ ╖ ╕ ╣ ║ ╗ ╝ ╜ ╛ ┐\n
+        └ ┴ ┬ ├ ─ ┼ ╞ ╟ ╚ ╔ ╩ ╦ ╠ ═ ╬ ╧\n
+        ╨ ╤ ╥ ╙ ╘ ╒ ╓ ╫ ╪ ┘ ┌ █ ▄ ▌ ▐ ▀\n
+        α ß Γ π Σ σ µ τ Φ Θ Ω δ ∞ φ ε ∩\n
+        ≡ ± ≥ ≤ ⌠ ⌡ ÷ ≈ ° ∙ · √ ⁿ ² ■\n\n\n\n</string>
+    <string name="code_page864">° · ∙ √ ▒ ─ │ ┼ ┤ ┬ ├ ┴ ┐ ┌ └ ┘\n
+        β ∞ φ ± ½ ¼ ≈ « » ﻷ ﻸ ﻻ ﻼ\n
+        ﺂ £ ¤ ﺄ € ﺎ ﺏ ﺕ ﺙ ، ﺝ ﺡ ﺥ\n
+        ٠ ١ ٢ ٣ ٤ ٥ ٦ ٧ ٨ ٩ ﻑ ؛ ﺱ ﺵ ﺹ ؟\n
+        ¢ ﺀ ﺁ ﺃ ﺅ ﻊ ﺋ ﺍ ﺑ ﺓ ﺗ ﺛ ﺟ ﺣ ﺧ ﺩ\n
+        ﺫ ﺭ ﺯ ﺳ ﺷ ﺻ ﺿ ﻁ ﻅ ﻋ ﻏ ¦ ¬ ÷ × ﻉ\n
+        ـ ﻓ ﻗ ﻛ ﻟ ﻣ ﻧ ﻫ ﻭ ﻯ ﻳ ﺽ ﻌ ﻎ ﻍ ﻡ\n
+        ﹽ _ّ ﻥ ﻩ ﻬ ﻰ ﻲ ﻐ ﻕ ﻵ ﻶ ﻝ ﻙ ﻱ ■\n\n\n\n</string>
+    <string name="code_page865">Ç ü é â ä à å ç ê ë è ï î ì Ä Å\n
+        É æ Æ ô ö ò û ù ÿ Ö Ü ø £ Ø ₧ ƒ\n
+        á í ó ú ñ Ñ ª º ¿ ⌐ ¬ ½ ¼ ¡ « ¤\n
+        ░ ▒ ▓ │ ┤ ╡ ╢ ╖ ╕ ╣ ║ ╗ ╝ ╜ ╛ ┐\n
+        └ ┴ ┬ ├ ─ ┼ ╞ ╟ ╚ ╔ ╩ ╦ ╠ ═ ╬ ╧\n
+        ╨ ╤ ╥ ╙ ╘ ╒ ╓ ╫ ╪ ┘ ┌ █ ▄ ▌ ▐ ▀\n
+        α ß Γ π Σ σ µ τ Φ Θ Ω δ ∞ φ ε ∩\n
+        ≡ ± ≥ ≤ ⌠ ⌡ ÷ ≈ ° ∙ · √ ⁿ ² ■\n\n\n\n</string>
+    <string name="code_page866">А Б В Г Д Е Ж З И Й К Л М Н О П\n
+        Р С Т У Ф Х Ц Ч Ш Щ Ъ Ы Ь Э Ю Я\n
+        а б в г д е ж з и й к л м н о п\n
+        ░ ▒ ▓ │ ┤ ╡ ╢ ╖ ╕ ╣ ║ ╗ ╝ ╜ ╛ ┐\n
+        └ ┴ ┬ ├ ─ ┼ ╞ ╟ ╚ ╔ ╩ ╦ ╠ ═ ╬ ╧\n
+        ╨ ╤ ╥ ╙ ╘ ╒ ╓ ╫ ╪ ┘ ┌ █ ▄ ▌ ▐ ▀\n
+        р с т у ф х ц ч ш щ ъ ы ь э ю я\n
+        Ё ё Є є Ї ї Ў ў ° ∙ · √ № ¤ ■\n\n\n\n</string>
+    <string name="code_page928">‘ ’ £ € ₯ ¦ § ¨ © ͺ « ¬ ―\n
+        ° ± ² ³ ΄ ΅ Ά · Έ Ή Ί » Ό ½ Ύ Ώ\n
+        ΐ Α Β Γ Δ Ε Ζ Η Θ Ι Κ Λ Μ Ν Ξ Ο\n
+        Π Ρ Σ Τ Υ Φ Χ Ψ Ω Ϊ Ϋ ά έ ή ί\n
+        ΰ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο\n
+        π ρ ς σ τ υ φ χ ψ ω ϊ ϋ ό ύ ώ\n\n\n\n</string>
+    <string name="code_page_farsi">٠ ١ ٢ ٣ ٤ ٥ ٦ ٧ ٨ ٩ ، . ؟ آ ك ء\n
+        ا ب ﭘ پ ت ث ج ﺟ چ ﭼ ح ﺣ\n
+        خ ﺧ د ذ ر ز ژ س ﺳ ش ﺷ ص ﺻ ض ﺿ ط\n
+        ░ ▒ ▓ │ ┤ ╡ ╢ ╖ ╕ ╣ ║ ╗ ╝ ╜ ╛ ┐\n
+        └ ┴ ┬ ├ ─ ┼ ╞ ╟ ╚ ╔ ╩ ╦ ╠ ═ ╬ ╧\n
+        ╨ ╤ ╥ ╙ ╘ ╒ ╓ ╫ ╪ ┘ ┌ █ ▄ ▌ ▐ ▀\n
+        ظ ع ﻊ ﻌ ﻋ غ ﻎ ﻐ ﻏ ف ﻓ ق ﻗ ک ﮐ ﮒ\n
+        گ ﻝ ﻻ ل م ﻣ ﻥ ن و ه ﻳ ی پ\n\n\n\n</string>
+    <string name="code_page_thai11">ั่ ั้ ั๊ ั๋ ิ่ ิ้ ิ๊ ิ๋ ิ์ ี่ ี้ ี๊ ี๋ ึ่ ึ้ ึ๊\n
+        ึ๋ ื่ ื้ ื๊ ื๋ ํ่ ํ้ ํ๊ ํ๋ ┏ ┓ ┗ ┛ ┃ ┣ ┫\n
+        เ ก ข ฃ ค ฅ ฆ ง จ ฉ ช ซ ฌ ญ ฎ ฏ\n
+        ฐ ฑ ฒ ณ ด ต ถ ท ธ น บ ป ผ ฝ พ ฟ\n
+        ภ ม ย ร ฤ ล ฦ ว ศ ษ ส ห ฬ อ ฮ ฯ\n
+        ะ ั า ำ ิ ี ึ ื ุ ู ฺ ━ ┻ ┳ ╋ ฿\n
+        เ แ โ ใ ไ ๅ ๆ ็ ่ ้ ๊ ๋ ์ ํ ๎ ๏\n
+        ๐ ๑ ๒ ๓ ๔ ๕ ๖ ๗ ๘ ๙ ๚ ๛\n\n\n\n</string>
+    <string name="code_page_thai14">┏ ┓ ┗ ┛ ┃ ━ ┣ ┫ ┻ ┳ ╋ ■ ํ่ ํ้ ํ๊ ํ๋\n
+         โ ใ ั่ ั้ ั๊ ั๋ ิ่ ิ้ ิ๊ ิ๋ ิ์ ี่ ี้ ี๊ ี๋ เ\n
+         ก ข ฃ ค ฅ ฆ ง จ ฉ ช ซ ฌ ญ ฎ ฏ\n
+         ฐ ฑ ฒ ณ ด ต ถ ท ธ น บ ป ผ ฝ พ ฟ\n
+         ภ ม ย ร ฤ ล ฦ ว ศ ษ ส ห ฬ อ ฮ ฯ\n
+         ะ ั า ำ ิ ี ึ ื ุ ู ฺ ึ่ ึ้ ึ๊ ึ๋ ฿\n
+         เ แ โ ใ ไ ๅ ๆ ็ ่ ้ ๊ ๋ ์ ํ ๎ ๏\n
+         ๐ ๑ ๒ ๓ ๔ ๕ ๖ ๗ ๘ ๙ ๛ ื่ ื้ ื๊ ื๋\n\n\n\n</string>
+    <string name="code_page_thai16">┏ ┓ ┗ ┛ ┃ ━ ┣ ┫ ┻ ┳ ╋ ■ ← ↑ → ↓\n
+        โ ใ ั่ ั้ ั๊ ั๋ ิ่ ิ้ ิ๊ ิ๋ ิ์ ี่ ี้ ี๊ ี๋ เ\n
+        ก ข ฃ ค ฅ ฆ ง จ ฉ ช ซ ฌ ญ ฎ ฏ\n
+        ฐ ฑ ฒ ณ ด ต ถ ท ธ น บ ป ผ ฝ พ ฟ\n
+        ภ ม ย ร ฤ ล ฦ ว ศ ษ ส ห ฬ อ ฮ ฯ\n
+        ะ ั า ำ ิ ี ึ ื ุ ู ฺ ึ่ ึ้ ึ๊ ึ๋ ฿\n
+        เ แ โ ใ ๅ ๆ ็ ่ ้ ๊ ๋ ์ ํ ไ ๏\n
+        ๐ ๑ ๒ ๓ ๔ ๕ ๖ ๗ ๘ ๙ ๛ ื่ ื้ ื๊ ื๋\n\n\n\n</string>
+    <string name="code_page_thai18">┏ ┓ ┗ ┛ ┃ ━ ┣ ┫ ┻ ┳ ╋ ■ ← ↑ → ↓\n
+        โ ใ ั่ ั้ ั๊ ั๋ ิ่ ิ้ ิ๊ ิ๋ ิ์ ี่ ี้ ี๊ ี๋ เ\n
+        ก ข ฃ ค ฅ ฆ ง จ ฉ ช ซ ฌ ญ ฎ ฏ\n
+        ฐ ฑ ฒ ณ ด ต ถ ท ธ น บ ป ผ ฝ พ ฟ\n
+        ภ ม ย ร ฤ ล ฦ ว ศ ษ ส ห ฬ อ ฮ ฯ\n
+        ะ ั า ำ ิ ี ึ ื ุ ู ฺ ึ่ ึ้ ึ๊ ึ๋ ฿\n
+        เ แ โ ใ ไ ๅ ๆ ็ ่ ้ ๊ ๋ ์ ํ ๏\n
+        ๐ ๑ ๒ ๓ ๔ ๕ ๖ ๗ ๘ ๙ ๛ ื่ ื้ ื๊ ื๋\n\n\n\n</string>
+    <string name="code_page_thai42">┏ ┓ ┗ ┛ ┃ ━ ┣ ┫ ┻ ┳ ╋ ■ ← ↑ → ↓\n
+        ๐ ๑ ๒ ๓ ๔ ๕ ๖ ๗ ๘ ๙ ฃ ฅ โ ใ เ\n
+        ก ข ค ฆ ง จ ฉ ช ซ ฌ ญ ฎ ฏ ฐ ฑ\n
+        ฒ ณ ด ต ถ ท ธ น บ ป ผ ฝ พ ฟ ภ ม\n
+        ย ร ฤ ล ว ศ ษ ส ห ฬ อ ฮ ะ ฦ า ำ\n
+        เ แ โ ใ ไ ๆ ฯ ุ ู ิ ี ึ ื ั ํ ็\n
+        ่ ้ ๊ ๋ ์ ฺ ํ่ ํ้ ํ๊ ํ๋ ั่ ั้ ั๊ ั๋ ิ่ ิ้\n
+        ิ๊ ิ๋ ิ์ ี่ ี้ ี๊ ี๋ ึ่ ึ้ ึ๊ ึ๋ ื่ ื้ ื๊ ื๋\n\n\n\n</string>
+    <string name="code_page_windows1250">€ ‚ „ … † ‡ ‰ Š ‹ Ś Ť Ž Ź\n
+        ‘ ’ “ ” • – — ™ š › ś ť ž ź\n
+        ˇ ˘ Ł ¤ Ą ¦ § ¨ © Ş « ¬ ® Ż\n
+        ° ± ˛ ł ´ µ ¶ · ¸ ą ş » Ľ ˝ ľ ż\n
+        Ŕ Á Â Ă Ä Ĺ Ć Ç Č É Ę Ë Ě Í Î Ď\n
+        Đ Ń Ň Ó Ô Ő Ö × Ř Ů Ú Ű Ü Ý Ţ ß\n
+        ŕ á â ă ä ĺ ć ç č é ę ë ě í î ď\n
+        đ ń ň ó ô ő ö ÷ ř ů ú ű ü ý ţ\n\n\n\n</string>
+    <string name="code_page_windows1251">Ђ Ѓ ‚ ѓ „ … † ‡ € ‰ Љ ‹ Њ Ќ Ћ Џ\n
+        ђ ‘ ’ “ ” • – — ™ љ › њ ќ ћ џ\n
+        Ў ў Ј ¤ Ґ ¦ § Ё © Є « ¬ ® Ї\n
+        ° ± І і ґ µ ¶ · ё № є » ј Ѕ ѕ ї\n
+        А Б В Г Д Е Ж З И Й К Л М Н О П\n
+        Р С Т У Ф Х Ц Ч Ш Щ Ъ Ы Ь Э Ю Я\n
+        а б в г д е ж з и й к л м н о п\n
+        р с т у ф х ц ч ш щ ъ ы ь э ю я\n\n\n\n</string>
+    <string name="code_page_windows1252">€ ‚ ƒ „ … † ‡ ˆ ‰ Š ‹ Œ Ž\n
+        ‘ ’ “ ” • – — ˜ ™ š › œ ž Ÿ\n
+        ¡ ¢ £ ¤ ¥ ¦ § ¨ © ª « ¬ ® ¯\n
+        ° ± ² ³ ´ µ ¶ · ¸ ¹ º » ¼ ½ ¾ ¿\n
+        À Á Â Ã Ä Å Æ Ç È É Ê Ë Ì Í Î Ï\n
+        Ð Ñ Ò Ó Ô Õ Ö × Ø Ù Ú Û Ü Ý Þ ß\n
+        à á â ã ä å æ ç è é ê ë ì í î ï\n
+        ð ñ ò ó ô õ ö ÷ ø ù ú û ü ý þ ÿ\n\n\n\n</string>
+    <string name="code_page_windows1253">€ ‚ ƒ „ … † ‡ ‰ ‹\n
+        ‘ ’ “ ” • – — ™ ›\n
+        ΅ Ά £ ¤ ¥ ¦ § ¨ © « ¬ ® ―\n
+        ° ± ² ³ ΄ µ ¶ · Έ Ή Ί » Ό ½ Ύ Ώ\n
+        ΐ Α Β Γ Δ Ε Ζ Η Θ Ι Κ Λ Μ Ν Ξ Ο\n
+        Π Ρ Σ Τ Υ Φ Χ Ψ Ω Ϊ Ϋ ά έ ή ί\n
+        ΰ α β γ δ ε ζ η θ ι κ λ μ ν ξ ο\n
+        π ρ ς σ τ υ φ χ ψ ω ϊ ϋ ό ύ ώ\n\n\n\n</string>
+    <string name="code_page_windows1254">€ ‚ ƒ „ … † ‡ ˆ ‰ Š ‹ Œ\n
+        ‘ ’ “ ” • – — ˜ ™ š › œ Ÿ\n
+        ¡ ¢ £ ¤ ¥ ¦ § ¨ © ª « ¬ ® ¯\n
+        ° ± ² ³ ´ µ ¶ · ¸ ¹ º » ¼ ½ ¾ ¿\n
+        À Á Â Ã Ä Å Æ Ç È É Ê Ë Ì Í Î Ï\n
+        Ğ Ñ Ò Ó Ô Õ Ö × Ø Ù Ú Û Ü İ Ş ß\n
+        à á â ã ä å æ ç è é ê ë ì í î ï\n
+        ğ ñ ò ó ô õ ö ÷ ø ù ú û ü ı ş ÿ\n\n\n\n</string>
+    <string name="code_page_windows1255">€ ‚ ƒ „ … † ‡ ‰ ‹\n
+        ‘ ’ “ ” • – — ˜ ™ ›\n
+        ¡ ¢ £ ₪ ¥ ¦ § ¨ © × « ¬ ® ¯\n
+        ° ± ² ³ ´ µ ¶ · ¸ ¹ ÷ » ¼ ½ ¾ ¿\n
+        ְ ֱ ֲ ֳ ִ ֵ ֶ ַ ָ ֹ ֻ ּ ֽ ־ ֿ\n
+        ׀ ׁ ׂ ׃ װ ױ ײ ׳ ״\n
+        א ב ג ד ה ו ז ח ט י ך כ ל ם מ ן\n
+        נ ס ע ף פ ץ צ ק ר ש ת\n\n\n\n</string>
+    <string name="code_page_windows1256">€ پ ‚ ƒ „ … † ‡ ˆ ‰ ٹ ‹ Œ چ ژ ڈ\n
+        گ ‘ ’ “ ” • – — ک ™ ڑ › œ ں\n
+        ، ¢ £ ¤ ¥ ¦ § ¨ © ھ « ¬ ® ¯\n
+        ° ± ² ³ ´ µ ¶ · ¸ ¹ ؛ » ¼ ½ ¾ ؟\n
+        ہ ء آ أ ؤ إ ئ ا ب ة ت ث ج ح خ د\n
+        ذ ر ز س ش ص ض × ط ظ ع غ ـ ف ق ك\n
+        à ل â م ن ه و ç è é ê ë ى ي î ï\n
+        ً ٌ ٍ َ ô ُ ِ ÷ ّ ù ْ û ü ے\n\n\n\n</string>
+    <string name="code_page_windows1257">€ ‚ „ … † ‡ ‰ ‹ ¨ ˇ ¸\n
+        ‘ ’ “ ” • – — ™ › ¯ ˛\n
+        ¢ £ ¤ ¦ § Ø © Ŗ « ¬ ® Æ\n
+        ° ± ² ³ ´ µ ¶ · ø ¹ ŗ » ¼ ½ ¾ æ\n
+        Ą Į Ā Ć Ä Å Ę Ē Č É Ź Ė Ģ Ķ Ī Ļ\n
+        Š Ń Ņ Ó Ō Õ Ö × Ų Ł Ś Ū Ü Ż Ž ß\n
+        ą į ā ć ä å ę ē č é ź ė ģ ķ ī ļ\n
+        š ń ņ ó ō õ ö ÷ ų ł ś ū ü ż ž\n\n\n\n</string>
+    <string name="code_page_windows1258">€ ‚ ƒ „ … † ‡ ˆ ‰ ‹ Œ\n
+        ‘ ’ “ ” • – — ˜ ™ › œ Ÿ\n
+        ¡ ¢ £ ¤ ¥ ¦ § ¨ © ª « ¬ ® ¯\n
+        ° ± ² ³ ´ µ ¶ · ¸ ¹ º » ¼ ½ ¾ ¿\n
+        À Á Â Ă Ä Å Æ Ç È É Ê Ë ̀ Í Î Ï\n
+        Đ Ñ ̉ Ó Ô Ơ Ö × Ø Ù Ú Û Ü Ư ̃ ß\n
+        à á â ă ä å æ ç è é ê ë ́ í î ï\n
+        đ ñ ̣ ó ô ơ ö ÷ ø ù ú û ü ư ₫ ÿ\n\n\n\n</string>
+    <string name="code_page_khmer_cambodia">ក ខ គ ឃ ង ច ឆ ជ ឈ ញ ដ ឋ ឌ ឍ ណ ត\n
+        ថ ទ ធ ន ប ផ ព ភ ម យ រ ល វ ឝ ឞ ស\n
+        ហ ឡ អ ឣ ឤ ឥ ឦ ឧ ឨ ឩ ឪ ឫ ឬ ឭ ឮ ឯ\n
+        ឰ ឱ ឲ ឳ ឴ ឵ ា ិ ី ឹ ឺ ុ ូ ួ ើ ឿ\n
+        ៀ េ ែ ៃ ោ ៅ ំ ះ ៈ ៉ ៊ ់ ៌ ៍ ៎ ៏\n
+        ័ ៑ ្ ៓ ។ ៕ ៖ ៗ ៘ ៙ ៚ ៛ ៜ ៝\n
+         ០ ១ ២ ៣ ៤ ៥ ៦ ៧ ៨ ៩\n
+         ៰ ៱ ៲ ៳ ៴ ៵ ៶ ៷ ៸ ៹\n\n\n\n</string>
+    <string name="code_page_tcvn3">ă â e ô ơ ư đ\n
+        à ả ã á ạ ằ ẳ ẵ ắ\n
+        ặ ầ ẩ ẫ ấ ậ è ẻ ẽ\n
+        é ẹ ề ể ễ ế ệ ì ỉ ĩ í ị ò\n
+        ỏ õ ó ọ ồ ổ ỗ ố ộ ờ ở ỡ ớ ợ ù\n
+        ủ ũ ú ụ ừ ử ữ ứ ự ỳ ỷ ỹ ý ỵ\n\n\n\n
+</string>
+
+</resources>
