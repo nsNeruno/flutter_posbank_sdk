@@ -117,6 +117,12 @@ class MockFlutterPosbankSdkPlatform
 
   @override
   List<SerialPortDevice> get serialPortDevices => throw UnimplementedError();
+
+  @override
+  Stream<MapEntry<String, dynamic>>? get debugMessageStream => null;
+
+  @override
+  bool debugMode = true;
 }
 
 void main() {

@@ -25,6 +25,8 @@ abstract class FlutterPosbankSdkPlatform extends PlatformInterface {
     _instance = instance;
   }
 
+  bool debugMode = false;
+
   Future<void> startDiscovery({
     Set<PrinterType> printerTypes = const {
       PrinterType.bluetooth,
@@ -110,4 +112,6 @@ abstract class FlutterPosbankSdkPlatform extends PlatformInterface {
   List<UsbDevice> get usbDevices => throw UnimplementedError();
   List<SerialPortDevice> get serialPortDevices => throw UnimplementedError();
   List<BluetoothDevice> get bluetoothDevices => throw UnimplementedError();
+
+  Stream<MapEntry<String, dynamic>>? get debugMessageStream => null;
 }

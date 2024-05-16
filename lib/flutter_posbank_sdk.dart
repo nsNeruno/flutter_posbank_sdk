@@ -29,4 +29,7 @@ class FlutterPosbankSdk {
   Future<void> printSelfTest() async {
     await FlutterPosbankSdkPlatform.instance.printSelfTest();
   }
+
+  set debugMode(bool value) => FlutterPosbankSdkPlatform.instance.debugMode = value;
+  bool get debugMode => FlutterPosbankSdkPlatform.instance.debugMode;
 }

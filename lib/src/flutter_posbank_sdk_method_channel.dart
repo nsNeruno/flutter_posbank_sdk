@@ -36,6 +36,7 @@ class MethodChannelFlutterPosbankSdk extends FlutterPosbankSdkPlatform {
     },
   }) async {
     if (_isDiscoveringPrinters) {
+      _logMessage('startDiscovery', 'is discovering',);
       return;
     }
 
@@ -59,6 +60,8 @@ class MethodChannelFlutterPosbankSdk extends FlutterPosbankSdkPlatform {
         (_, type,) => _ | type.value,
       );
     }
+
+    _logMessage('startDiscovery', 'types: \n${printerTypes.toList()}',);
     
     await methodChannel.invokeMethod(
       'startDiscovery',
@@ -74,11 +77,17 @@ class MethodChannelFlutterPosbankSdk extends FlutterPosbankSdkPlatform {
   @override
   Future<List<PrinterDevice>?> getDevicesList() async {
     final mappedData = await methodChannel.invokeMapMethod('getDevicesList',);
-    return mappedData?.values.where(
-      (e) => e != null,
-    ).map(
-      (e) => PrinterDevice.fromMap(e,),
-    ).toList();
+    _logMessage('getDevicesList', '${mappedData?.length} devices');
+    try {
+      return mappedData?.values.where(
+        (e) => e != null,
+      ).map(
+        (e) => PrinterDevice.fromMap(e,),
+      ).toList();
+    } catch (_, __) {
+      _logMessage('getDevicesList.error', [_, __,],);
+      return null;
+    }
   }
 
   @override
@@ -237,6 +246,7 @@ class MethodChannelFlutterPosbankSdk extends FlutterPosbankSdkPlatform {
   }
 
   Future<dynamic> _onPrinterMessage(dynamic arguments,) async {
+    _logMessage('_onPrinterMessage', arguments,);
     if (arguments is Map) {
       final msg = arguments.cast<String, dynamic>();
       final int? what = msg['what'];
@@ -320,4 +330,20 @@ class MethodChannelFlutterPosbankSdk extends FlutterPosbankSdkPlatform {
   List<BluetoothDevice> get bluetoothDevices => _bluetoothDevices.toList(
     growable: false,
   );
+
+  late final _debugController = StreamController<MapEntry<String, dynamic>>.broadcast();
+
+  void _logMessage(String key, Object? data,) {
+    if (debugMode) {
+      _debugController.add(MapEntry(key, '$data',),);
+    }
+  }
+
+  @override
+  Stream<MapEntry<String, dynamic>>? get debugMessageStream {
+    if (debugMode) {
+      return _debugController.stream;
+    }
+    return null;
+  }
 }
