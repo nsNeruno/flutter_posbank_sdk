@@ -19,8 +19,8 @@ class BluetoothDevice extends PrinterDeviceContext {
         bluetoothClass = asMapAndCast(
           data['bluetoothClass'], (data) => BluetoothClass._fromMap(data,),
         ) ?? (throw (ArgumentError('Missing bluetooth class',))),
-        uuids = asList(data['uuids'],)?.whereType<Map<String, dynamic>>().map(
-          (e) => BluetoothUuid._fromMap(e,),
+        uuids = asList(data['uuids'],)?.whereType<Map>().map(
+          (e) => BluetoothUuid._fromMap(asMap(e,) ?? {},),
         ).toList() ?? [],
         bondState = _parseBondState(data['bondState'],),
         super(name: data['name'],);

@@ -1,4 +1,5 @@
 import 'package:flutter_posbank_sdk/src/devices/device_context.dart';
+import 'package:flutter_posbank_sdk/src/utils.dart';
 
 import 'constants.dart';
 
@@ -26,7 +27,9 @@ class PrinterDevice {
         productID = data['productID'],
         model = data['model'],
         modelSimpleName = data['modelSimpleName'],
-        deviceContext = PrinterDeviceContext.fromMap(data['deviceContext'],);
+        deviceContext = PrinterDeviceContext.fromMap(
+          asMap(data['deviceContext'],) ?? {},
+        );
 
   Map<String, dynamic> toMap() => {
     'deviceType': _deviceType,

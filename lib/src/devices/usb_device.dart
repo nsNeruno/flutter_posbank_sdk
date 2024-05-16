@@ -18,8 +18,8 @@ class UsbDevice extends PrinterDeviceContext {
         configurationCount = data['configurationCount'] ?? 0,
         interfaces = asList(
           data['interfaces'],
-        )?.whereType<Map<String, dynamic>>().map(
-          (e) => UsbInterface._(e,),
+        )?.whereType<Map>().map(
+          (e) => UsbInterface._(asMap(e,) ?? {},),
         ).toList(growable: false,) ?? [],
         super(name: data['deviceName'],);
 
@@ -121,8 +121,8 @@ class UsbInterface extends Serializable {
         interfaceProtocol = data['interfaceProtocol'],
         endpoints = asList(
           data['endpoints'],
-        )?.whereType<Map<String, dynamic>>().map(
-          (e) => UsbEndpoint._(e,),
+        )?.whereType<Map>().map(
+          (e) => UsbEndpoint._(asMap(e,) ?? {},),
         ).toList(growable: false,) ?? [];
 
   @override

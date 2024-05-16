@@ -6,6 +6,9 @@ T? asType<T>(dynamic data,) {
 }
 
 Map<String, dynamic>? asMap(dynamic data,) {
+  if (data is Map) {
+    return data.cast<String, dynamic>();
+  }
   return asType<Map<String, dynamic>>(data,);
 }
 
