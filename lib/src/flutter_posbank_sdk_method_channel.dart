@@ -185,6 +185,16 @@ class MethodChannelFlutterPosbankSdk extends FlutterPosbankSdkPlatform {
   }
 
   @override
+  Future<void> cutPaper({int? feeds,}) async {
+    await methodChannel.invokeMethod(
+      'cutPaper',
+      {
+        'feeds': feeds,
+      },
+    );
+  }
+
+  @override
   Future<void> printText({
     required String text,
     PrinterAlignment textAlignment = PrinterAlignment.center,

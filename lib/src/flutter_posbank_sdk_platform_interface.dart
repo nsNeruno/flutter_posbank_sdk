@@ -78,6 +78,10 @@ abstract class FlutterPosbankSdkPlatform extends PlatformInterface {
     throw UnimplementedError();
   }
 
+  Future<void> cutPaper({int? feeds,}) {
+    throw UnimplementedError();
+  }
+
   Future<void> printText({
     required String text,
     PrinterAlignment textAlignment = PrinterAlignment.center,

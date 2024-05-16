@@ -75,6 +75,11 @@ class MockFlutterPosbankSdkPlatform
   }
 
   @override
+  Future<void> cutPaper({int? feeds,}) {
+    throw UnimplementedError();
+  }
+
+  @override
   Future<void> printText({
     required String text,
     PrinterAlignment textAlignment = PrinterAlignment.center,

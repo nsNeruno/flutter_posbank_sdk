@@ -1,3 +1,4 @@
+import 'src/constants.dart';
 import 'src/flutter_posbank_sdk_platform_interface.dart';
 import 'src/printer_device.dart';
 
@@ -26,8 +27,30 @@ class FlutterPosbankSdk {
     await FlutterPosbankSdkPlatform.instance.disconnectPrinter();
   }
 
+  Future<void> printText({
+    required String text,
+    PrinterAlignment textAlignment = PrinterAlignment.center,
+    Set<PrinterTextAttribute> textAttribute = const {
+      PrinterTextAttribute.fontA,
+    },
+    PrinterCharSizeVertical charSizeVertical = PrinterCharSizeVertical.vertical1,
+    PrinterCharSizeHorizontal charSizeHorizontal = PrinterCharSizeHorizontal.horizontal1,
+  }) async {
+    await FlutterPosbankSdkPlatform.instance.printText(
+      text: text,
+      textAlignment: textAlignment,
+      textAttribute: textAttribute,
+      charSizeVertical: charSizeVertical,
+      charSizeHorizontal: charSizeHorizontal,
+    );
+  }
+
   Future<void> printSelfTest() async {
     await FlutterPosbankSdkPlatform.instance.printSelfTest();
+  }
+
+  Future<void> cutPaper({int? feeds,}) async {
+    await FlutterPosbankSdkPlatform.instance.cutPaper(feeds: feeds,);
   }
 
   set debugMode(bool value) => FlutterPosbankSdkPlatform.instance.debugMode = value;
