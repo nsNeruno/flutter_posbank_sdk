@@ -78,12 +78,20 @@ class MethodChannelFlutterPosbankSdk extends FlutterPosbankSdkPlatform {
   Future<List<PrinterDevice>?> getDevicesList() async {
     final mappedData = await methodChannel.invokeMapMethod('getDevicesList',);
     _logMessage('getDevicesList', '${mappedData?.length} devices');
+    _logMessage('getDevicesList', 'Names: ${mappedData?.keys.toList()}',);
+    _logMessage('getDevicesList', 'Details: ${mappedData?.values.toList()}',);
     try {
-      return mappedData?.values.where(
-        (e) => e != null,
-      ).map(
-        (e) => PrinterDevice.fromMap(e,),
-      ).toList();
+      final data = mappedData?.values;
+      if (data?.isNotEmpty ?? false) {
+        final devices = <PrinterDevice>[];
+        for (final e in data!) {
+          if (e is Map) {
+            devices.add(PrinterDevice.fromMap(e.cast<String, dynamic>(),),);
+          }
+        }
+        return devices;
+      }
+      return null;
     } catch (_, __) {
       _logMessage('getDevicesList.error', [_, __,],);
       return null;
