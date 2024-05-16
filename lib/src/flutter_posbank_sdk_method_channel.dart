@@ -141,17 +141,27 @@ class MethodChannelFlutterPosbankSdk extends FlutterPosbankSdkPlatform {
   
   @override
   Future<void> connectToDevice(PrinterDevice device,) async {
-    await methodChannel.invokeMapMethod(
-      'connectDevice',
-      {
-        'deviceName': device.deviceName,
-        'initialize': true,
-      },
+    _logMessage(
+      'connectToDevice',
+      'Device:\n${device.toMap()}',
     );
+    try {
+      await methodChannel.invokeMapMethod(
+        'connectDevice',
+        {
+          'deviceName': device.deviceName,
+          'initialize': true,
+        },
+      );
+    } catch (_, __) {
+      _logMessage('connectToDevice', [_, __,],);
+      rethrow;
+    }
   }
 
   @override
   Future<void> initializePrinter() async {
+    _logMessage('initializePrinter', 'Initializing',);
     await methodChannel.invokeMethod('initializePrinter',);
   }
 
@@ -168,9 +178,11 @@ class MethodChannelFlutterPosbankSdk extends FlutterPosbankSdkPlatform {
   @override
   Future<PrinterStatus?> getPrinterStatus() async {
     if (_getStatusCompleter != null && !_getStatusCompleter!.isCompleted) {
+      _logMessage('getPrinterStatus', 'Last Status: $_lastPrinterStatus',);
       return _lastPrinterStatus;
     }
     final result = await methodChannel.invokeMethod('method',);
+    _logMessage('getPrinterStatus', 'Connected: ${result == null}',);
     if (result == null) {
       final completer = Completer<PrinterStatus>();
       _getStatusCompleter = completer;
