@@ -1,4 +1,11 @@
+import 'package:flutter_posbank_sdk/src/devices/device_context.dart';
+
 import 'constants.dart';
+
+export 'devices/bluetooth_device.dart';
+export 'devices/device_context.dart';
+export 'devices/serial_port_device.dart';
+export 'devices/usb_device.dart';
 
 class PrinterDevice {
 
@@ -9,6 +16,7 @@ class PrinterDevice {
     this.productID,
     this.model,
     this.modelSimpleName,
+    this.deviceContext,
   );
 
   PrinterDevice.fromMap(Map<String, dynamic> data,)
@@ -17,7 +25,18 @@ class PrinterDevice {
         manufacturer = data['manufacturer'],
         productID = data['productID'],
         model = data['model'],
-        modelSimpleName = data['modelSimpleName'];
+        modelSimpleName = data['modelSimpleName'],
+        deviceContext = PrinterDeviceContext.fromMap(data['deviceContext'],);
+
+  Map<String, dynamic> toMap() => {
+    'deviceType': _deviceType,
+    'deviceName': deviceName,
+    'manufacturer': manufacturer,
+    'productID': productID,
+    'model': model,
+    'modelSimpleName': modelSimpleName,
+    'deviceContext': deviceContext?.toMap(),
+  };
 
   final int _deviceType;
   final String deviceName;
@@ -25,6 +44,7 @@ class PrinterDevice {
   final String productID;
   final String model;
   final String modelSimpleName;
+  final PrinterDeviceContext? deviceContext;
 
   PrinterType get deviceType {
     final lookup = Map.fromEntries(

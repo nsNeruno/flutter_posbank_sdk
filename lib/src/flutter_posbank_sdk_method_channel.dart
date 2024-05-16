@@ -27,11 +27,45 @@ class MethodChannelFlutterPosbankSdk extends FlutterPosbankSdkPlatform {
   final methodChannel = const MethodChannel('flutter_posbank_sdk');
 
   @override
-  Future<void> startDiscovery() async {
+  Future<void> startDiscovery({
+    Set<PrinterType> printerTypes = const {
+      PrinterType.bluetooth,
+      PrinterType.network,
+      PrinterType.usb,
+      PrinterType.serial,
+    },
+  }) async {
     if (_isDiscoveringPrinters) {
       return;
     }
-    await methodChannel.invokeMethod('startDiscovery',);
+
+    int options = 0;
+    if (printerTypes.isEmpty ||
+        (printerTypes.length == 1 && printerTypes.contains(PrinterType.unknown,))
+    ) {
+      const defaultOptions = <PrinterType>{
+        PrinterType.bluetooth,
+        PrinterType.network,
+        PrinterType.usb,
+        PrinterType.serial,
+      };
+
+      options = defaultOptions.fold(
+        0, (_, type,) => _ | type.value,
+      );
+    } else {
+      options = printerTypes.fold(
+        0,
+        (_, type,) => _ | type.value,
+      );
+    }
+    
+    await methodChannel.invokeMethod(
+      'startDiscovery',
+      {
+        'options': options,
+      },
+    );
     final completer = Completer<void>();
     _discoveryCompleter = completer;
     return completer.future;
@@ -45,6 +79,33 @@ class MethodChannelFlutterPosbankSdk extends FlutterPosbankSdkPlatform {
     ).map(
       (e) => PrinterDevice.fromMap(e,),
     ).toList();
+  }
+
+  @override
+  Future<void> setSerialPorts(List<String> ports,) async {
+    await methodChannel.invokeMethod(
+      'setSerialPorts',
+      {
+        'ports': ports,
+      },
+    );
+  }
+  
+  @override
+  Future<List<SerialPortDevice>> getSerialPortDeviceList() async {
+    final mappedData = await methodChannel.invokeMapMethod('getSerialPortDeviceList',);
+    final serialDevices = mappedData?.values.where(
+      (e) => e != null,
+    ).map(
+      (e) => SerialPortDevice.fromMap(e,),
+    ).toList() ?? [];
+
+    if (serialDevices.isNotEmpty) {
+      _serialDevices.clear();
+      _serialDevices.addAll(serialDevices,);
+    }
+
+    return serialDevices;
   }
 
   @override
@@ -178,9 +239,14 @@ class MethodChannelFlutterPosbankSdk extends FlutterPosbankSdkPlatform {
   Future<dynamic> _onPrinterMessage(dynamic arguments,) async {
     if (arguments is Map) {
       final msg = arguments.cast<String, dynamic>();
-      int? what = msg['what'];
-      int? arg1 = msg['arg1'];
-      int? arg2 = msg['arg2'];
+      final int? what = msg['what'];
+      final int? arg1 = msg['arg1'];
+      final int? arg2 = msg['arg2'];
+
+      final usb = msg['usb'];
+      final serial = msg['serial'];
+      final bluetooth = msg['bluetooth'];
+
       switch (what) {
         case PrinterMessage.discoveryStarted:
           _isDiscoveringPrinters = true;
@@ -204,6 +270,30 @@ class MethodChannelFlutterPosbankSdk extends FlutterPosbankSdkPlatform {
           }
           break;
       }
+
+      if (usb is Map<String, dynamic>) {
+        final usbDevice = UsbDevice.fromMap(usb,);
+        if (_usbDevices.indexWhere((device) => device.deviceId == usbDevice.deviceId,) < 0) {
+          _usbDevices.add(usbDevice,);
+        }
+      }
+
+      if (serial is Map<String, dynamic>) {
+        final serialDevice = SerialPortDevice.fromMap(serial,);
+        if (_serialDevices.indexWhere((device) => device.deviceID == serialDevice.deviceID,) < 0) {
+          _serialDevices.add(serialDevice,);
+        }
+      }
+
+      if (bluetooth is Map<String, dynamic>) {
+        final btDevice = BluetoothDevice.fromMap(bluetooth,);
+        final uuids = btDevice.uuids.map((e) => e.toString(),);
+        if (!_bluetoothDevices.any(
+            (device) => device.uuids.any((uuid) => uuids.contains(uuid.toString(),),),
+        )) {
+          _bluetoothDevices.add(btDevice,);
+        }
+      }
     }
   }
 
@@ -213,4 +303,21 @@ class MethodChannelFlutterPosbankSdk extends FlutterPosbankSdkPlatform {
   PrinterStatus? _lastPrinterStatus;
   Completer<void>? _discoveryCompleter;
   Completer<PrinterStatus>? _getStatusCompleter;
+
+  final _usbDevices = <UsbDevice>[];
+  final _serialDevices = <SerialPortDevice>[];
+  final _bluetoothDevices = <BluetoothDevice>[];
+
+  @override
+  List<UsbDevice> get usbDevices => _usbDevices.toList(growable: false,);
+
+  @override
+  List<SerialPortDevice> get serialPortDevices => _serialDevices.toList(
+    growable: false,
+  );
+
+  @override
+  List<BluetoothDevice> get bluetoothDevices => _bluetoothDevices.toList(
+    growable: false,
+  );
 }

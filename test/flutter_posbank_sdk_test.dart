@@ -8,7 +8,14 @@ class MockFlutterPosbankSdkPlatform
     implements FlutterPosbankSdkPlatform {
 
   @override
-  Future<void> startDiscovery() {
+  Future<void> startDiscovery({
+    Set<PrinterType> printerTypes = const {
+      PrinterType.bluetooth,
+      PrinterType.network,
+      PrinterType.usb,
+      PrinterType.serial,
+    },
+  }) {
     // TODO: implement startDiscovery
     throw UnimplementedError();
   }
@@ -16,6 +23,17 @@ class MockFlutterPosbankSdkPlatform
   @override
   Future<List<PrinterDevice>?> getDevicesList() {
     // TODO: implement getDevicesList
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<void> setSerialPorts(List<String> ports,) {
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<List<SerialPortDevice>> getSerialPortDeviceList() {
+    // TODO: implement getSerialPortDeviceList
     throw UnimplementedError();
   }
 
@@ -90,6 +108,15 @@ class MockFlutterPosbankSdkPlatform
   Future<void> printSelfTest() {
     throw UnimplementedError();
   }
+
+  @override
+  List<UsbDevice> get usbDevices => throw UnimplementedError();
+
+  @override
+  List<BluetoothDevice> get bluetoothDevices => throw UnimplementedError();
+
+  @override
+  List<SerialPortDevice> get serialPortDevices => throw UnimplementedError();
 }
 
 void main() {

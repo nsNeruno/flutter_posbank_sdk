@@ -1,5 +1,8 @@
 package lab.neruno.flutter_posbank_sdk
 
+import android.bluetooth.BluetoothDevice
+import android.content.Context
+import android.hardware.usb.UsbDevice
 import android.os.Handler
 import android.os.Looper
 import android.os.Message
@@ -30,6 +33,11 @@ class FlutterPosbankSdkPlugin: FlutterPlugin, MethodCallHandler, ActivityAware, 
   private lateinit var printerManager: PrinterManager
   private var serialPort: SerialPort? = null
   private var printer: Printer? = null
+  private lateinit var applicationContext: Context
+  
+  private var usbDevices: MutableList<UsbDevice> = mutableListOf()
+  private var serialDevices: MutableList<SerialPortDevice> = mutableListOf()
+  private var bluetoothDevices: MutableList<BluetoothDevice> = mutableListOf()
 
   override fun onAttachedToEngine(flutterPluginBinding: FlutterPlugin.FlutterPluginBinding) {
     channel = MethodChannel(flutterPluginBinding.binaryMessenger, "flutter_posbank_sdk")
@@ -41,16 +49,32 @@ class FlutterPosbankSdkPlugin: FlutterPlugin, MethodCallHandler, ActivityAware, 
     when (call.method) {
       "startDiscovery" -> {
         val options = call.argument<Int>("options") ?: PrinterConstants.PRINTER_TYPE_SERIAL
+        if (options.and(PrinterConstants.PRINTER_TYPE_SERIAL) == PrinterConstants.PRINTER_TYPE_SERIAL) {
+          val devices: HashMap<String, SerialPortDevice>? = SerialPortManager.getDeviceList()
+          devices?.let {
+            printerManager.setSerialPorts(it.keys.toTypedArray())
+          }
+        }
+        usbDevices.clear()
+        serialDevices.clear()
+        bluetoothDevices.clear()
         printerManager.startDiscovery(options)
         result.success(null)
       }
       "getSerialPortDeviceList" -> {
-        val devices: HashMap<String, SerialPortDevice> = SerialPortManager.getDeviceList()
+        val devices: HashMap<String, SerialPortDevice>? = SerialPortManager.getDeviceList()
         result.success(
-          devices.mapValues {
+          devices?.mapValues {
             it.value.toMap()
           }
         )
+      }
+      "setSerialPorts" -> {
+        val ports = call.argument<List<String>>("ports")
+        if (ports != null) {
+          printerManager.setSerialPorts(ports.toTypedArray())
+        }
+        result.success(null)
       }
       "openSerialPortDevice" -> {
         val deviceName = call.argument<String>("deviceName")
@@ -67,7 +91,7 @@ class FlutterPosbankSdkPlugin: FlutterPlugin, MethodCallHandler, ActivityAware, 
       "getDevicesList" -> {
         result.success(
           printerManager.deviceList?.mapValues {
-            it.value.toMap()
+            it.value.toMap(applicationContext)
           }
         )
       }
@@ -75,11 +99,20 @@ class FlutterPosbankSdkPlugin: FlutterPlugin, MethodCallHandler, ActivityAware, 
         val deviceName = call.argument<String>("deviceName")
         if (deviceName != null) {
           result.success(
-            printerManager.deviceList?.get(deviceName)?.run { toMap() }
+            printerManager.deviceList?.get(deviceName)?.run { toMap(applicationContext) }
           )
         } else {
           result.success(null)
         }
+      }
+      "requestUsbDevicePermission" -> {
+        val deviceId = call.argument<Int>("deviceId")
+        val device = usbDevices.find { device ->
+          device.deviceId == deviceId
+        }
+
+        device?.requestPermission(applicationContext)
+        result.success(null)
       }
       "connectDevice" -> {
         val deviceName = call.argument<String>("deviceName")
@@ -238,6 +271,8 @@ class FlutterPosbankSdkPlugin: FlutterPlugin, MethodCallHandler, ActivityAware, 
     val looper = Looper.getMainLooper()
     val handler = Handler(looper, this)
     printerManager = PrinterManager(context, handler, looper)
+
+    applicationContext = context
   }
 
   override fun onDetachedFromActivityForConfigChanges() { /* No-op */ }
@@ -250,30 +285,61 @@ class FlutterPosbankSdkPlugin: FlutterPlugin, MethodCallHandler, ActivityAware, 
 
   // BEGIN: Handler.Callback
   override fun handleMessage(msg: Message): Boolean {
-//    val msgID = msg.what
-//    var device: PrinterDevice? = null
 
-    val obj = msg.obj
-    if (obj is PrinterDevice) {
-      // TODO: Handle PrinterDevice
+    var objKey = "obj"
+    val obj = msg.obj.let {
+
+      var obj: Map<String, Any?>? = null
+
+      if (it is PrinterDevice) {
+        when (val deviceContext = it.deviceContext) {
+          is UsbDevice -> {
+            val device: UsbDevice = deviceContext
+
+            obj = device.toMap(applicationContext)
+            objKey = "usb"
+
+            usbDevices.add(device)
+          }
+          is SerialPortDevice -> {
+            val device: SerialPortDevice = deviceContext
+
+            obj = device.toMap()
+            objKey = "serial"
+
+            serialDevices.add(device)
+          }
+          is BluetoothDevice -> {
+            val device: BluetoothDevice = deviceContext
+
+            obj = device.toMap(applicationContext)
+            objKey = "bluetooth"
+
+            bluetoothDevices.add(device)
+          }
+        }
+      }
+
+      obj
     }
 
-//    PrinterConstants
+    val payload = mapOf(
+      "what" to msg.what,
+      "arg1" to msg.arg1,
+      "arg2" to msg.arg2,
+      "data" to mapOf<String, Any?>(
+        *with (msg.data) {
+          keySet().map {
+            Pair(it, this.getString(it) ?: this.getInt(it))
+          }
+        }.toTypedArray()
+      ),
+      objKey to obj
+    )
 
     channel.invokeMethod(
       "onPrinterMessage",
-      mapOf<String, Any?>(
-        "what" to msg.what,
-        "arg1" to msg.arg1,
-        "arg2" to msg.arg2,
-        "data" to mapOf<String, Any?>(
-          *with (msg.data) {
-            keySet().map {
-              Pair(it, this.getString(it) ?: this.getInt(it))
-            }
-          }.toTypedArray()
-        )
-      )
+      payload
     )
 
     return true

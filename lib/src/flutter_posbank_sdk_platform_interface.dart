@@ -25,11 +25,26 @@ abstract class FlutterPosbankSdkPlatform extends PlatformInterface {
     _instance = instance;
   }
 
-  Future<void> startDiscovery() {
+  Future<void> startDiscovery({
+    Set<PrinterType> printerTypes = const {
+      PrinterType.bluetooth,
+      PrinterType.network,
+      PrinterType.usb,
+      PrinterType.serial,
+    },
+  }) {
     throw UnimplementedError();
   }
 
   Future<List<PrinterDevice>?> getDevicesList() {
+    throw UnimplementedError();
+  }
+
+  Future<void> setSerialPorts(List<String> ports,) {
+    throw UnimplementedError();
+  }
+
+  Future<List<SerialPortDevice>> getSerialPortDeviceList() {
     throw UnimplementedError();
   }
 
@@ -91,4 +106,8 @@ abstract class FlutterPosbankSdkPlatform extends PlatformInterface {
   Future<void> printSelfTest() {
     throw UnimplementedError();
   }
+
+  List<UsbDevice> get usbDevices => throw UnimplementedError();
+  List<SerialPortDevice> get serialPortDevices => throw UnimplementedError();
+  List<BluetoothDevice> get bluetoothDevices => throw UnimplementedError();
 }
