@@ -26,6 +26,8 @@ class MethodChannelFlutterPosbankSdk extends FlutterPosbankSdkPlatform {
   @visibleForTesting
   final methodChannel = const MethodChannel('flutter_posbank_sdk');
 
+  bool _hasPerformedDiscovery = false;
+
   @override
   Future<void> startDiscovery({
     Set<PrinterType> printerTypes = const {
@@ -35,6 +37,9 @@ class MethodChannelFlutterPosbankSdk extends FlutterPosbankSdkPlatform {
       PrinterType.serial,
     },
   }) async {
+    if (_hasPerformedDiscovery) {
+      return;
+    }
     if (_isDiscoveringPrinters) {
       _logMessage('startDiscovery', 'is discovering',);
       return;
@@ -141,6 +146,9 @@ class MethodChannelFlutterPosbankSdk extends FlutterPosbankSdkPlatform {
   
   @override
   Future<void> connectToDevice(PrinterDevice device,) async {
+    if (_connectCompleter != null && !_connectCompleter!.isCompleted) {
+      return;
+    }
     _logMessage(
       'connectToDevice',
       'Device:\n${device.toMap()}',
@@ -150,9 +158,11 @@ class MethodChannelFlutterPosbankSdk extends FlutterPosbankSdkPlatform {
         'connectDevice',
         {
           'deviceName': device.deviceName,
-          'initialize': true,
         },
       );
+      final completer = Completer();
+      _connectCompleter = completer;
+      return completer.future;
     } catch (_, __) {
       _logMessage('connectToDevice', [_, __,],);
       rethrow;
@@ -293,7 +303,22 @@ class MethodChannelFlutterPosbankSdk extends FlutterPosbankSdkPlatform {
           break;
         case PrinterMessage.discoveryFinished:
           _discoveryCompleter?.complete();
+          _hasPerformedDiscovery = true;
           _isDiscoveringPrinters = false;
+          break;
+        case PrinterMessage.stateChanged:
+          switch (arg2) {
+            case PrinterMessage.connSucceeded:
+              _connectCompleter?.complete();
+              break;
+            case PrinterMessage.connFailed:
+              _connectCompleter?.completeError(
+                PlatformException(code: 'PosbankError', message: 'Failed to connect',),
+              );
+              break;
+          }
+          break;
+        case PrinterMessage.connClosed:
           break;
         case PrinterMessage.dataReceived:
           switch (arg1) {
@@ -342,6 +367,7 @@ class MethodChannelFlutterPosbankSdk extends FlutterPosbankSdkPlatform {
 
   PrinterStatus? _lastPrinterStatus;
   Completer<void>? _discoveryCompleter;
+  Completer<void>? _connectCompleter;
   Completer<PrinterStatus>? _getStatusCompleter;
 
   final _usbDevices = <UsbDevice>[];

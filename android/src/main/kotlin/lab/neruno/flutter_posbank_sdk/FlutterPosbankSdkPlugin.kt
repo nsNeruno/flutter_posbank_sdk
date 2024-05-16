@@ -39,6 +39,8 @@ class FlutterPosbankSdkPlugin: FlutterPlugin, MethodCallHandler, ActivityAware, 
   private var serialDevices: MutableList<SerialPortDevice> = mutableListOf()
   private var bluetoothDevices: MutableList<BluetoothDevice> = mutableListOf()
 
+  private var hasPerformedDiscovery = false
+
   override fun onAttachedToEngine(flutterPluginBinding: FlutterPlugin.FlutterPluginBinding) {
     channel = MethodChannel(flutterPluginBinding.binaryMessenger, "flutter_posbank_sdk")
     channel.setMethodCallHandler(this)
@@ -48,6 +50,10 @@ class FlutterPosbankSdkPlugin: FlutterPlugin, MethodCallHandler, ActivityAware, 
 
     when (call.method) {
       "startDiscovery" -> {
+        if (hasPerformedDiscovery) {
+          result.success(null)
+          return
+        }
         val options = call.argument<Int>("options") ?: PrinterConstants.PRINTER_TYPE_SERIAL
         if (options.and(PrinterConstants.PRINTER_TYPE_SERIAL) == PrinterConstants.PRINTER_TYPE_SERIAL) {
           val devices: HashMap<String, SerialPortDevice>? = SerialPortManager.getDeviceList()
@@ -59,6 +65,7 @@ class FlutterPosbankSdkPlugin: FlutterPlugin, MethodCallHandler, ActivityAware, 
         serialDevices.clear()
         bluetoothDevices.clear()
         printerManager.startDiscovery(options)
+        hasPerformedDiscovery = true
         result.success(null)
       }
       "getSerialPortDeviceList" -> {
@@ -121,12 +128,8 @@ class FlutterPosbankSdkPlugin: FlutterPlugin, MethodCallHandler, ActivityAware, 
           if (device != null) {
             val printer = printerManager.connectDevice(device)
             if (printer != null) {
-              val initialize = call.argument<Boolean>("initialize") ?: false
               this.printer?.disconnect()
               this.printer = printer
-              if (initialize) {
-                printer.initialize()
-              }
               result.success(null)
               return
             }
